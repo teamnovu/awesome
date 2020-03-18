@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Outer Frame</title>
+
+    <style>
+        /* no border, full width frame */
+        iframe {
+            border: 0;
+            width: 100%;
+        }
+
+        body {
+            background-color: #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+<h1>Outer Frame</h1>
+<p>This is the outer frame. Below is the inner frame embedded</p>
+
+<frame-container></frame-container>
+
+<p>This text is below the inner frame</p>
+
+<script src="WindowMessenger.js"></script>
+<script>
+  var selector = 'frame-container';
+  var frameSrc = 'in-frame.html';
+
+  var containers = [];
+
+  var generateIframe = function (src, params) {
+    params = params || {};
+    var frame = document.createElement('iframe');
+    frame.src = src;
+    for (var key in params) {
+      if (params.hasOwnProperty(key) && typeof params[key] !== "undefined") {
+        frame.setAttribute(key, params[key]);
+      }
+    }
+    return frame;
+  };
+
+  var handleContainer = function ($container) {
+    var $frame = generateIframe(frameSrc, {'scrolling': 'no'});
+    $container.appendChild($frame);
+
+    var messenger = new WindowMessenger(window, $frame.contentWindow);
+
+    messenger.pub('frame.responsive', true);
+
+    // handle frame height
+    messenger.sub('frame.height', function (payload, event) {
+      $frame.setAttribute('height', payload);
+    });
+
+    containers.push({
+      $container: $container,
+      $frame: $frame,
+      messenger: messenger,
+    })
+  };
+
+  window.addEventListener('load', function () {
+    // handle all containers on page
+    var $containers = Array.from(document.querySelectorAll(selector));
+    console.log($containers);
+    $containers.forEach(handleContainer);
+  })
+
+</script>
+
+</body>
+</html>
