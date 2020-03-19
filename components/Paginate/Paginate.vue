@@ -41,7 +41,7 @@ export default {
       items: this.firstPageItems,
       meta: {
         currentPage: this.firstPageItems.length ? 1 : 0,
-        lastPage: 1,
+        lastPage: null,
       },
     }
   },
@@ -49,7 +49,8 @@ export default {
   computed: {
     hasMore() {
       return (
-        this.state === 'pending' || this.meta.currentPage < this.meta.lastPage
+        this.state === 'pending' ||
+        (this.meta.lastPage && this.meta.currentPage < this.meta.lastPage)
       )
     },
 
@@ -100,6 +101,7 @@ export default {
       loadMore: this.loadMore,
       hasMore: this.hasMore,
       items: this.items,
+      meta: this.meta,
       error: this.error,
       state: this.state,
     })

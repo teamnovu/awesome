@@ -42,6 +42,7 @@ This renderless component is used to easily integrate pagination logic.
 | Property 	| Type     	| Description                                                  	|
 |----------	|----------	|--------------------------------------------------------------	|
 | items    	| Array    	| Array containing the items to display                        	|
+| meta    	| Object   	| Object containing meta information about the paginator       	|
 | hasMore  	| Boolean  	| Wether or not there are more items to be loaded              	|
 | loadMore 	| Function 	| Function used to load more items                             	|
 | state    	| String   	| The current state of the paginator (loading, success, error) 	|
