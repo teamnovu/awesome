@@ -36,7 +36,7 @@ export default {
 
   data() {
     return {
-      state: 'pending',
+      state: 'success',
       error: null,
       items: [],
       meta: {
@@ -48,10 +48,7 @@ export default {
 
   computed: {
     hasMore() {
-      return (
-        this.state === 'pending' ||
-        (this.meta.lastPage && this.meta.currentPage < this.meta.lastPage)
-      )
+      return this.meta.lastPage && this.meta.currentPage < this.meta.lastPage
     },
 
     nextPage() {
@@ -79,8 +76,6 @@ export default {
 
     if (!this.items.length || !(this.meta && this.meta.lastPage)) {
       this.loadMore()
-    } else {
-      this.state = 'success'
     }
   },
 
