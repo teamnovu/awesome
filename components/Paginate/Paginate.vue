@@ -17,9 +17,9 @@ export default {
       type: String,
       default: 'limit',
     },
-    firstPageItems: {
-      type: Array,
-      default: () => [],
+    firstPageData: {
+      type: Object,
+      default: null,
     },
     parseItems: {
       type: Function,
@@ -38,9 +38,9 @@ export default {
     return {
       state: 'pending',
       error: null,
-      items: this.firstPageItems,
+      items: [],
       meta: {
-        currentPage: this.firstPageItems.length ? 1 : 0,
+        currentPage: 0,
         lastPage: null,
       },
     }
@@ -72,8 +72,15 @@ export default {
   },
 
   mounted() {
-    if (!this.firstPageItems.length) {
+    if (this.firstPageData) {
+      this.items = this.parseItems(this.firstPageData)
+      this.meta = this.parseMeta(this.firstPageData)
+    }
+
+    if (!this.items.length || !(this.meta && this.meta.lastPage)) {
       this.loadMore()
+    } else {
+      this.state = 'success'
     }
   },
 
