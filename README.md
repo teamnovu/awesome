@@ -2,8 +2,11 @@
 A repository containing awesome components, plugins and other reusable stuff.
 
 ## Vue Components
-- [TransitionExpand](./components/TransitionExpand) is used to transition an element to an unkown height.
-- [Paginate](./components/Paginate) is used to easily integrate pagination logic.
+- [TransitionExpand](./components/TransitionExpand) transitions an element to an unkown height.
+- [Paginate](./components/Paginate) easily integrates pagination logic.
+
+## Vue Mixins
+- [TweenNumbers](./mixins/TweenNumbers) smoothly animates numbers.
 
 ## Code Snippets
 - [Responsive iFrame](./snippets/responsive-iframe) shows an expample for enabling responsive iframes
