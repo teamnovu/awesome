@@ -19,4 +19,4 @@ A repository containing awesome components, plugins and other reusable stuff.
 - [nuxt-image](https://image.nuxtjs.org/) makes it easy to implement responsive images.
 - [Global Events](https://github.com/shentao/vue-global-events) lets you register event handlers per page to add neat application shortcuts.
 - [Global Components](https://github.com/nuxt-community/global-components) lets you register components globally by adding the .global suffix to your filename. Eg. `Component.global.vue`
-- [nuxt-interpolation](https://github.com/daliborgogic/nuxt-interpolation) This utility takes the raw html data, usually provided by Statamic, and either converts the links to <a> tags or if the links points to a entry, pushes it into the router. So the nuxt Router behavior is maintained. 
+- [nuxt-interpolation](https://github.com/daliborgogic/nuxt-interpolation) This utility takes the raw html data, usually provided by Statamic, and either converts the links to a tags or if the links points to a entry, pushes it into the router. So the nuxt Router behavior is maintained. 
